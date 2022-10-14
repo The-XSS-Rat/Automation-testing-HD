@@ -3,6 +3,7 @@
 import loginPage from '../../pageObjects/loginPage.js';
 import homePage from '../../pageObjects/homePage';
 import menu from '../../pageObjects/components/menu.js';
+import selectRandomQuest from '../../pageObjects/selectRandomQuest.js';
 
 describe('Basic menu navigation', () => {
     beforeEach(() => {
@@ -13,8 +14,16 @@ describe('Basic menu navigation', () => {
         loginPage.login();
     });
 
-    it('Can  select a quest',() => {
-        menubar.clickMenuItemByText('Quests');
+    it('Can  select a quest from lists',() => {
+        menu.clickMenuItemByText('Quests');
+        selectRandomQuest.selectFirstQuest();
     })
+
+    it('Can  select a quest',() => {
+        menu.clickMenuItemByText('Random Quest');
+        selectRandomQuest.clickSelectQuest();
+    })
+
+    
 
 });
