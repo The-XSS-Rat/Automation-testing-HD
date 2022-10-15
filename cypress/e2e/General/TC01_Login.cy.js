@@ -9,32 +9,23 @@ describe('Users default module on login', () => {
 
     beforeEach(() => {
         cy.once('uncaught:exception', () => false);
-        cy.visit('https://172.105.85.46/login.php')
+        cy.visit('https://172.105.85.46/login.php',{failOnStatusCode: false})
       })
 
       it('Can login with correct credentials',() => {
-        loginPage.elemUserNameField().type("admin");
-        loginPage.elemPassField().type('****');
-        loginPage.login();
+        loginPage.doLogin("automationUser","automationPasswordThatIsLong");
         homePage.openMenuItem('User panel');
     });
 
-
     it('Can not login with incorrect credentials',() => {
-      loginPage.elemUserNameField().type("admin");
-      loginPage.elemPassField().type('admin');
-      loginPage.login();
+      loginPage.doLogin("admin","admin");
       loginPage.getErrorTextField()  });
 
       it('Can not login with incorrect username',() => {
-        loginPage.elemUserNameField().type("admins");
-        loginPage.elemPassField().type('***');
-        loginPage.login();
+        loginPage.doLogin("automationUsers","automationPasswordThatIsLong");
         loginPage.getErrorTextField()  });
 
       it('Can not login with incorrect password',() => {
-        loginPage.elemUserNameField().type("admin");
-        loginPage.elemPassField().type('***');
-        loginPage.login();
+        loginPage.doLogin("automationUser","automationPasswordThatIsLong1");
         loginPage.getErrorTextField()  });
 });

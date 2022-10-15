@@ -37,7 +37,15 @@ class loginPage {
         return homePage;
     }
 
+    doLogin(user,pass){
+        this.elemUserNameField().type(user);
+        this.elemPassField().type(pass);
+        this.login();
+    }
 
+    checkOnPage(){
+        cy.xpath('/html/body/main/div/h1').contains('Login');
+    }
     
 }
 

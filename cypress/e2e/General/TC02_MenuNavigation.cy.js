@@ -7,9 +7,7 @@ describe('Basic menu navigation', () => {
     beforeEach(() => {
         cy.once('uncaught:exception', () => false);
         cy.visit('https://172.105.85.46/login.php')
-        loginPage.elemUserNameField().type("automationUser");
-        loginPage.elemPassField().type('automationPasswordThatIsLong');
-        loginPage.login();
+        loginPage.doLogin("automationUser","automationPasswordThatIsLong");
       })
     
     it('Can go back to home page', () => {
@@ -37,22 +35,4 @@ describe('Basic menu navigation', () => {
         homePage.openMenuItem('Contact us');
         menu.clickBackToMainMenu();
     })
-
-    it('Can not open itemOverview page if not logged in', () => {
-        homePage.openMenuItem('Logout');
-        cy.visit('https://hackerats.com/itemOverview.php');
-        cy.get("#error").contains('You are not logged in or not a admin');
-    });
-
-    it('Can not open itemOverview page if not logged in as admin', () => {
-        homePage.openMenuItem('Logout');
-        loginPage.elemUserNameField().type("testtest");
-        loginPage.elemPassField().type('testtesttesttest');
-        loginPage.login();
-
-        cy.visit('https://hackerats.com/itemOverview.php');
-        cy.get("#error").contains('You are not logged in or not a admin');
-    });
-
-
 });
