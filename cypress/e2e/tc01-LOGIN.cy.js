@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
-import loginPage from '../../pageObjects/loginPage.js';
-import homePage from '../../pageObjects/homePage';
-import settingsPage from '../../pageObjects/settingsPage';
-import menu from '../../pageObjects/components/menu.js';
+import loginPage from '../pageObjects/loginPage.js';
+import homePage from '../pageObjects/homePage';
+import settingsPage from '../pageObjects/settingsPage';
+import menu from '../pageObjects/components/menu.js';
 
 describe('Users default module on login', () => {
 

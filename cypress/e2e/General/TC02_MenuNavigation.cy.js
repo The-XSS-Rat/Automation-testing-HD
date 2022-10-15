@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 
 import loginPage from '../../pageObjects/loginPage.js';
 import homePage from '../../pageObjects/homePage';
@@ -8,8 +7,8 @@ describe('Basic menu navigation', () => {
     beforeEach(() => {
         cy.once('uncaught:exception', () => false);
         cy.visit('https://172.105.85.46/login.php')
-        loginPage.elemUserNameField().type("admin");
-        loginPage.elemPassField().type('dkskjKJHidjodoidfhdsbjifdsgfIUGhsiofdhsdiofjhsdfdkskjKJHidjo');
+        loginPage.elemUserNameField().type("automationUser");
+        loginPage.elemPassField().type('automationPasswordThatIsLong');
         loginPage.login();
       })
     

@@ -10,8 +10,8 @@ class selectRandomQuest {
         cy.xpath('/html/body/div[2]/form/button').scrollIntoView().click();
     }
 
-    selectFirstQuest(){
-        cy.xpath('/html/body/main/div/div[1]/a').scrollIntoView().click();
+    selectQuestOnPosition(position){
+        cy.xpath('/html/body/main/div/div[' + position + ']/a').scrollIntoView().click();
     }
 
 }
